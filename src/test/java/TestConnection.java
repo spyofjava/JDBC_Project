@@ -18,7 +18,8 @@ public class TestConnection {
     public static void main(String[] args){
 
 
-        String url = "jdbc:oracle:thin:@54.236.150.168:1521:XE" ;
+       // String url = "jdbc:oracle:thin:@54.236.150.168:1521:XE" ;
+        String url = "jdbc:oracle:thin:@54.211.129.23:1521:XE" ;
         try {
             Connection con = DriverManager.getConnection(url, "hr", "hr");
 
