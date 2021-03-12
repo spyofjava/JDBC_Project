@@ -75,7 +75,7 @@ public class demo {
 
  */
 
-
+/*
         String url = "jdbc:oracle:thin:@54.211.129.23:1521:XE" ;
         String username = "hr" ;
         String password = "hr" ;
@@ -86,13 +86,87 @@ public class demo {
 
         ResultSet rs = stm.executeQuery("SELECT * FROM JOBS") ;
 
+        while (rs.next()){
+
+            System.out.print(rs.getString(1));
+            System.out.print("\t\t"+rs.getString(2));
+            System.out.println("\t\t\t"+rs.getString(3));
+           // System.out.println(rs.getString("JOB_TITLE")+" "+rs.getString("MIN_SALARY") +" "+rs.getString("MAX_SALARY") );
+
+
+        }
 
 
 
+ */
 
 
+        String url = "jdbc:oracle:thin:@54.211.129.23:1521:XE" ;
+        String username = "hr" ;
+        String password = "hr" ;
+
+        Connection con = DriverManager.getConnection(url,username,password);
+
+        Statement stm = con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY);
+
+        ResultSet rs = stm.executeQuery("SELECT * FROM REGIONS") ;
+
+        /*
+        rs.next();
+        rs.previous();
+        rs.first();
+        rs.last();
+        rs.beforeFirst();
+        rs.afterLast();
+        rs.absolute();
+         */
 
 
+        /*
+        rs.next();
+        System.out.println("FIRST ROW "+rs.getString(2));
+        rs.last();
+        System.out.println("LAST ROW "+rs.getString(2));
+        rs.previous();
+        System.out.println("PREVIOUS ROW "+rs.getString(2));
+
+        rs.beforeFirst();
+        //rs.first(); //pay attention here
+        while (rs.next()){
+            System.out.println("2nd ROW REGION_NAME IS "+rs.getString(2));
+        }
+
+        rs.absolute(2);
+        System.out.println("2nd ROW REGION_NAME IS "+rs.getString(2));
+
+
+ */
+
+
+        /*
+        rs.beforeFirst();
+        //rs.first(); //pay attention here
+        while (rs.next()){
+            //System.out.println(rs.next());
+            System.out.println("rs.getString(1) = "+rs.getString(1));
+        }
+
+
+        rs.afterLast();
+        while (rs.previous()){
+            //System.out.println(rs.next());
+            System.out.println("rs.getString(1) = "+rs.getString(1));
+        }
+
+ */
+
+
+        ResultSetMetaData rsmd = rs.getMetaData();
+
+
+        System.out.println(rsmd.getColumnCount());
+        System.out.println("rsmd.getColumnName(1) = " + rsmd.getColumnName(1));
+        System.out.println("rsmd.getColumnName(2) = " + rsmd.getColumnName(2));
 
 
     }
